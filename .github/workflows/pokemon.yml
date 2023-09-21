@@ -15,7 +15,7 @@ jobs:
           git config --global user.name "carldomond7"
       - name: Run Powershell Script
         run: |
-          .pokemonlab/poke.ps1
+          pwsh -File poke.ps1
           git config --global user.email "carldomond7@gmail.com"
           git config --global user.name "carldomond7"
           git commit -m "New Infernape has Appeared"
