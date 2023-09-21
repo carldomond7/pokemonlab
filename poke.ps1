@@ -28,7 +28,7 @@ for($i = 0; $i -lt $moveset.Count; $i++)
     $combinedarray += $moveset[$i]
     $combinedarray += "`n"
     $combinedarray += $description[$i]
-    $combiendarray += "`n"
+    $combinedarray += "`n"
 }
 
 #Create unique filename
