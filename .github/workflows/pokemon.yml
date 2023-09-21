@@ -3,7 +3,9 @@ on:
   workflow_dispatch:         
 jobs:
   event-handler:
-    runs-on: windows-latest   
+    runs-on: windows-latest  
+    env:
+        token: ${{ secrets.SECRET_TOKEN }}
     steps:  
       - name: Getting Github Credentials
         run: |
@@ -23,6 +25,4 @@ jobs:
           git commit -m "New Infernape has Appeared"
           git push origin main
         shell: pwsh
-    env:
-        token: ${{ secrets.SECRET_TOKEN }}
           
