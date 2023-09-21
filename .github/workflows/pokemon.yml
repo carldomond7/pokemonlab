@@ -15,34 +15,8 @@ jobs:
           git config --global user.name "carldomond7"
       - name: Run Powershell Script
         run: |
-          $apiURL = "https://pokeapi.co/api/v2/pokemon-species/infernape"
-          $infernape_info = Invoke-RestMethod -Uri $apiURL -Method Get 
-          $moveset = @()
-          $description = @()
-          foreach($move in $infernape_info.abilities) {
-          $moveset += $move.ability.name
-          }
-          foreach($des in $infernape_info.abilities)
-          {
-          $api = $des.ability.url
-          $Moveinfo = Invoke-RestMethod -Uri $api
-          $parsedinfo = $Moveinfo.effect_entries[1].effect
-          $description += $parsedinfo
-          }
-          $combinedarray = @()
-
-          for($i = 0; $i -lt $moveset.Count; $i++)
-          {
-          $combinedarray += $moveset[$i]
-          $combinedarray += "`n"
-          $combinedarray += $description[$i]
-          $combinedarray += "`n"
-          }
-          $timestamp = Get-Date -Format "yyyyMMddHHmmss"
-          $uniqueFilename = "infernape_$timestamp.txt"
-          $combinedarray | Set-Content -Path $uniqueFilename
+          pwsh -File poke.ps1
           git add $uniqueFilename
-          git config --global credential.helper store
           git config --global user.email "carldomond7@gmail.com"
           git config --global user.name "carldomond7"
           git commit -m "New Infernape has Appeared"
