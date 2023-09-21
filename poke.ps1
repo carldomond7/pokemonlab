@@ -2,7 +2,7 @@
 #Retrieve Pokemon info
 #Parse through pokemon info and append the abilities NAME to the moveset array
 
-$inf = Invoke-RestMethod "https://pokeapi.co/api/v2/pokemon/infernape" 
+$inf = Invoke-RestMethod "https://pokeapi.co/api/v2/pokemon/staraptor" 
 
 $moveset = @()
 $description = @()
@@ -37,7 +37,7 @@ for($i = 0; $i -lt $moveset.Count; $i++)
 
 #Create unique filename
 $timestamp = Get-Date -Format "yyyyMMddHHmmss"
-$uniqueFilename = "infernape_$timestamp.txt"
+$uniqueFilename = "staraptor_$timestamp.txt"
 $combinedarray | Set-Content -Path $uniqueFilename
 
 if (Test-Path -Path $uniqueFilename) {
