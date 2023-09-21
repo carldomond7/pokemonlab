@@ -32,7 +32,8 @@ for($i = 0; $i -lt $moveset.Count; $i++)
 }
 
 #Create unique filename
-$uniqueFilename = "infernape.txt" + (Get-Date -Format "yyyyMMddHHmmss") 
+$timestamp = Get-Date -Format "yyyyMMddHHmmss"
+$uniqueFilename = "infernape_$timestamp.txt"
 $combinedarray | Set-Content -Path $uniqueFilename
 
 
