@@ -4,7 +4,9 @@ on:
 jobs:
   event-handler:
     runs-on: windows-latest   
-    steps:   
+    steps:  
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Run Powershell Script
         run: |
           $apiURL = "https://pokeapi.co/api/v2/pokemon-species/infernape"
@@ -12,6 +14,8 @@ jobs:
           $uniqueFilename = "infernape.txt" + (Get-Date -Format "yyyyMMddHHmmss") 
           $infernape_info | Set-Content -Path $uniqueFilename
           git add $uniqueFilename
+          git config user.email "carldomond7@gmail.com"
+          git config user.name "carldomond7"
           git commit -m "New Infernape has Appeared"
           git push origin main
         shell: pwsh
