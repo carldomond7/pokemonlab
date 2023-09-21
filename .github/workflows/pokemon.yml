@@ -1,0 +1,20 @@
+on:
+  push:
+  workflow_dispatch:         
+jobs:
+  event-handler:
+    runs-on: windows-latest   
+    steps:   
+      - name: Run Powershell Script
+        run: |
+          $apiURL = "https://pokeapi.co/api/v2/pokemon-species/infernape"
+          $infernape_info = Invoke-RestMethod -Uri $apiURL -Method Get 
+          $uniqueFilename = "infernape.txt" + (Get-Date -Format "yyyyMMddHHmmss") 
+          $infernape_info | Set-Content -Path $uniqueFilename
+          git config user.email "cdomond@esri.com"
+          git config user.name "car13337"
+          git add $uniqueFilename
+          git commit -m "New Infernape has Appeared"
+          git push origin main
+        shell: pwsh
+          
