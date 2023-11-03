@@ -40,6 +40,7 @@ $timestamp = Get-Date -Format "yyyyMMddHHmmss"
 $uniqueFilename = "staraptor_$timestamp.txt"
 $combinedarray | Set-Content -Path $uniqueFilename
 
+Write-Host $env:SECRET_TOKEN
 if (Test-Path -Path $uniqueFilename) {
     Write-Host "File created successfully."
 } else {
