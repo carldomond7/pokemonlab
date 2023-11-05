@@ -37,7 +37,7 @@ for($i = 0; $i -lt $moveset.Count; $i++)
 
 #Create unique filename
 $timestamp = Get-Date -Format "yyyyMMddHHmmss"
-$uniqueFilename = "staraptor_$timestamp.txt"
+$uniqueFilename = "gengar_$timestamp.txt"
 $combinedarray | Set-Content -Path $uniqueFilename
 
 
