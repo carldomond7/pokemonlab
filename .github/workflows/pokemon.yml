@@ -4,9 +4,9 @@ on:
   workflow_call:
     inputs:
       Pokemon: 
-      description: Pokemon you want to receive info on
-      required: true
-      type: string
+        description: Pokemon you want to receive info on
+        required: true
+        type: string
 jobs:
   event-handler:
     runs-on: windows-latest  
@@ -19,6 +19,8 @@ jobs:
         run: |
           git config --global user.email "carldomond7@gmail.com"
           git config --global user.name "carldomond7"
+      - name: Making sure Pokemon input is there
+        run: echo ${{ inputs.Pokemon }}
       - name: Run Powershell Script
         run: |
           if [ "${{ inputs.Pokemon }}" == "Gengar"]; then
