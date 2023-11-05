@@ -1,0 +1,6 @@
+cursed-body
+
+
+Moves that hit this Pokémon have a 30% chance of being Disabled afterward.
+
+
