@@ -23,7 +23,7 @@ jobs:
         run: echo ${{ inputs.Pokemon }}
       - name: Run Powershell Script
         run: |
-          if [ "${{ inputs.Pokemon }}" == "Gengar"]; then
+          if ( "${{ inputs.Pokemon }}" == "Gengar" ); then
           pwsh -File gengar.ps1
           git config --global user.email "carldomond7@gmail.com"
           git config --global user.name "carldomond7"
