@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-build-workflow:
+  call-workflow-in-local-repo:
     name: Gengar info
-    uses: carldomond7/pokemonlab/.github/workflows/pokemon.yml@master
+    uses: ./.github/workflows/pokemon.yml
     with: 
       Pokemon: "Gengar"
     secrets: inherit 
