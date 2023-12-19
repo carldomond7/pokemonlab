@@ -1,0 +1,94 @@
+- name: Interact with PokeAPI
+  hosts: TM1
+  become: yes
+  vars:
+    pokemon_file: "/home/PokeDes/magmar.txt"
+  tasks:
+    - name: Create Directory
+      shell: mkdir /home/PokeDes
+      ignore_errors: yes
+
+    - name: Create file
+      shell: touch {{ pokemon_file }}
+      ignore_errors: yes
+
+    - name: Get Pokemon Details
+      uri:
+        url: "https://pokeapi.co/api/v2/pokemon/magmar"
+        method: GET
+        return_content: yes
+      register: response
+
+    - name: Extract abilities list
+      set_fact:
+        abilities: "{{ response.json.abilities }}"
+
+    - name: Print the first three ability names and Append them to a file
+      lineinfile:
+        path: "{{ pokemon_file }}"
+        line: "Ability name: {{ item.ability.name }}"
+      loop: "{{ abilities[:3] }}"
+
+- name: Interact with PokeAPI Electabuzz
+  hosts: TM2
+  become: yes
+  vars:
+    pokemon_file2: "/home/PokeDes/electabuzz.txt"
+  tasks:
+    - name: Create Directory
+      shell: mkdir /home/PokeDes
+      ignore_errors: yes
+
+    - name: Create file
+      shell: touch {{ pokemon_file2 }}
+      ignore_errors: yes
+
+    - name: Get Pokemon Details
+      uri:
+        url: "https://pokeapi.co/api/v2/pokemon/electabuzz"
+        method: GET
+        return_content: yes
+      register: response
+
+    - name: Extract abilities list
+      set_fact:
+        abilities: "{{ response.json.abilities }}"
+
+    - name: Print the first three ability names for Electabuzz and Append them to a file
+      lineinfile:
+        path: "{{ pokemon_file2 }}"
+        line: "Ability name: {{ item.ability.name }}"
+      loop: "{{ abilities[:3] }}"
+
+- name:  Interact with PokeAPI Infernape
+  hosts: target_machines
+  become: yes
+  vars:
+    pokemon_file3: "/home/PokeDes/infernape.txt"
+  tasks:
+    - name: Create Directory
+      shell: mkdir /home/PokeDes
+     ignore_errors: yes
+
+    - name: Create file
+      shell: touch {{ pokemon_file3 }}
+      ignore_errors: yes
+
+    - name: Get Pokemon Details
+      uri:
+        url: "https://pokeapi.co/api/v2/pokemon/infernape"
+        method: GET
+        return_content: yes
+      register: response
+
+    - name: Extract abilities list
+      set_fact:
+        abilities: "{{ response.json.abilities }}"
+
+    - name: Print the first three ability names for Infernape and Append them to a file
+      lineinfile:
+        path: "{{ pokemon_file3 }}"
+        line: "Ability name: {{ item.ability.name }}"
+      loop: "{{ abilities[:3] }}"
+                                                                
+                                         
